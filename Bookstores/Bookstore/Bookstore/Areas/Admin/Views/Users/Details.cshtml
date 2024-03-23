@@ -1,0 +1,80 @@
+﻿@model Bookstore.Models.User
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            Full Name
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.user_fullname)
+        </dd>
+
+        <dt>
+            Email
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.user_email)
+        </dd>
+
+        <dt>
+            Phone
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.user_phone)
+        </dd>
+
+        <dt>
+            Name
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.user_name)
+        </dd>
+
+        <dt>
+            PassWord
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.user_password)
+        </dd>
+
+        <dt>
+            Avatar
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.user_avatar)
+        </dd>
+
+        <dt>
+            Birthday
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.user_birthday)
+        </dd>
+
+        <dt>
+            Gender
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.user_gender)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <button onclick="location.href='@Url.Action("Edit", new { id = Model.user_id })'" class="btn btn-primary">Edit</button> |
+
+    <a href="@Url.Action("Index")" class="btn btn-primary">Back to List</a>
+</p>

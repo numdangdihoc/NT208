@@ -1,0 +1,103 @@
+﻿@model Bookstore.Models.Book
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            Name
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.book_name)
+        </dd>
+
+        <dt>
+            Image
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.book_image)
+        </dd>
+
+        <dt>
+            Price
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.book_price)
+        </dd>
+
+        <dt>
+            Author
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.book_author)
+        </dd>
+
+        <dt>
+            Promotion
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.book_promotionprice)
+        </dd>
+
+        <dt>
+            View
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.book_viewcount)
+        </dd>
+
+        <dt>
+            Description
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.book_description)
+        </dd>
+
+        <dt>
+            Detail
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.book_detail)
+        </dd>
+
+        <dt>
+            Quantity
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.book_quantity)
+        </dd>
+
+        <dt>
+            Status
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.book_status)
+        </dd>
+
+        <dt>
+            Category
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BookCategory.cate_name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <button onclick="location.href='@Url.Action("Edit", new { id = Model.book_id })'" class="btn btn-primary">Edit</button> |
+
+    <a href="@Url.Action("Index")" class="btn btn-primary">Back to List</a>
+</p>

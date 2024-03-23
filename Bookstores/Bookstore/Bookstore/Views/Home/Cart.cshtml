@@ -1,0 +1,141 @@
+﻿@model List<Bookstore.Models.Cart>
+@{
+    ViewBag.Title = "Cart";
+    Layout = "~/Views/Shared/UserLayout.cshtml";
+
+}
+@{
+    int? total = 0;
+    int[] arraycart = new int[10]; // Tạo mảng có 10 phần tử kiểu int
+}
+
+<div class="container">
+    <div class="cart-content bg-bwhite">
+        <div class="content-nav d-flex justify-content-between align-items-center mx-2 h-160 bg-white">
+            <label for="cate-title" class="text-xl text-bold">Giỏ hàng</label>
+            <label for="cate-link d-flex ">
+                <a href="/html/index.html" class="dis-link text-m">Trang chủ</a>
+                <i class="fas fa-arrow-right mx-3 color-gray"></i>
+                <a href="#" class="text-m">Giỏ hàng</a>
+            </label>
+        </div>
+
+        <div class="cart-main p-30 mx-60 my-50 d-flex justify-content-between">
+            <div class="cart-info w-75 px-20">
+                <table class="table bg-bwhite align-middle text-center text-m table-bordered border-primary border-top-0 table-border-top table-border-bottom">
+                    <thead>
+                        <tr class="text-uppercase">
+                            <th scope="col"></th>
+                            <th scope="col">sản phẩm</th>
+                            <th scope="col">Giá</th>
+                            <th scope="col">Số lượng</th>
+                            <th scope="col">Tổng thanh toán</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var cartItem in Model)
+                        {
+                            total += cartItem.cart_price;
+                            <tr>
+                                <td>
+                                    <a href="@Url.Action("DeleteCart", "Home", new { SanPhamID = cartItem.cart_id })">
+                                        <i class="fas fa-times"></i>
+                                    </a>
+                                </td>
+                                <td>
+                                    <div class="card-product-row d-flex my-5 px-5">
+                                        <img src="@Url.Content($"~/wwwroot/image/{cartItem.cart_image}")"
+                                             alt=""
+                                             class="img-size80" />
+                                        <div class="pl-4">
+                                            <p class="card-title-row mt-3 my-2">
+                                                @cartItem.cart_name_book
+                                            </p>
+                                            <p class="card-text my-2">@cartItem.cart_name_book</p>
+                                        </div>
+                                    </div>
+                                </td>
+
+                                <td>@cartItem.cart_price</td>
+                                <td>
+                                    <div class="buy-amount d-flex justify-content-center">
+                                        <button><i class="fas fa-minus"></i></button>
+                                        <input type="text" name="amount" id="amount" value="1" />
+                                        <button><i class="fas fa-plus"></i></button>
+                                    </div>
+                                </td>
+                                <td>@cartItem.cart_price</td>
+                                <td>
+                                    <input class="form-check-input border-black"
+                                           type="checkbox"
+                                           value="cartId" id="flexCheckDefault" />
+
+                                </td>
+                            </tr>
+                            <script>
+                                    
+                                    const checkbox = document.getElementById('flexCheckDefault');
+
+                                    // Thêm sự kiện onchange cho checkbox
+                                    checkbox.addEventListener('change', function() {
+                                        // Kiểm tra nếu checkbox được chọn (được đánh dấu)
+                                        if (this.checked) {
+                                            // Lấy giá trị ID của cart từ thuộc tính value của checkbox
+                                            int cartId = @cartItem.cart_id;
+
+                                            // Kiểm tra xem cartId đã tồn tại trong mảng chưa trước khi thêm vào
+                                            if (!arraycart.includes(cartId)) {
+                                                arraycart.push(cartId); // Thêm cartId vào mảng
+                                            }
+                                        } else {
+                                            // Nếu checkbox không được chọn, xóa cartId khỏi mảng nếu nó tồn tại
+                                            const index = arraycart.indexOf(productId);
+                                            if (index !== -1) {
+                                                arraycart.splice(index, 1); // Xóa productId khỏi mảng
+                                            }
+                                        }
+                                    });
+                            </script>
+
+
+                        }
+
+                    </tbody>
+                </table>
+
+                <div class="d-flex mt-4">
+                    <input type="text"
+                           class="input-style rounded-pill w-25 px-3 py-2"
+                           placeholder="Nhập mã giảm giá..." />
+                    <button class="btn btn-primary rounded-pill w-15 text-m text-bold text-white mx-3">
+                        áp dụng
+                    </button>
+                </div>
+            </div>
+            <div class="cart-order w-25 px-20 py-3 text-m bg-white">
+                <label for="cate-order-title" class="text-l text-primary pb-5">Hoá đơn</label>
+                <div class="d-flex justify-content-between">
+                    <p class="w-50">Tổng thanh toán:</p>
+                    <label for="expect-price" class="w-50 text-right">@total đ</label>
+                </div>
+                <hr class="hr" />
+                <div class="d-flex justify-content-between">
+                    <p class="w-50">Phí vận chuyển:</p>
+                    <p class="w-50 text-right">
+                        nhấn thanh toán để chọn hình thức vận chuyển
+                    </p>
+                </div>
+                <hr class="hr" />
+                <div class="d-flex justify-content-between py-4">
+                    <p class="w-50 text-bold">Tổng:</p>
+                    <label for="total-price"
+                           class="w-50 text-right card-price text-bold">@total đ</label>
+                    </div>
+                    <a class="btn btn-success" href="@Url.Action("Order", "Home")">
+                        <span class="glyphicon glyphicon-shopping-cart"></span> Thanh toán
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,169 @@
+﻿@model IEnumerable<Bookstore.Models.Book>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+            <div class="d-flex justify-content-between m-5">
+                <div class="d-flex border-solid align-items-center"
+                     style="width: 22%">
+                    <i class="fas fa-cart-plus fa-4x m-2" style="color: #710d00"></i>
+                    <div class="m-lg-2">
+                        <h5 class="m-0">Đơn hàng</h5>
+                        <p>10<a class="text-decoration-none" href="/Admin/OrderManager/Index">(chi tiết)</a></p>
+                    </div>
+                </div>
+                <div class="d-flex border-solid align-items-center"
+                     style="width: 22%">
+                    <i class="fas fa-users fa-4x m-2" style="color: #146ef4"></i>
+                    <div class="m-lg-2">
+                        <h5 class="m-0">Thành viên</h5>
+                        <p>10<a class="text-decoration-none" href="/Admin/UserManager/Index">(chi tiết)</a></p>
+                    </div>
+                </div>
+                <div class="d-flex border-solid align-items-center"
+                     style="width: 22%">
+                    <i class="fas fa-book fa-4x m-2" style="color: #0a7a11"></i>
+                    <div class="m-lg-2">
+                        <h5 class="m-0">Sách</h5>
+                        <p>10<a class="text-decoration-none" href="/Admin/BookManager/Index">(chi tiết)</a></p>
+                    </div>
+                </div>
+                <div class="d-flex border-solid align-items-center"
+                     style="width: 22%">
+                    <i class="fas fa-star fa-4x m-2" style="color: #ffe102"></i>
+                    <div class="m-lg-2">
+                        <h5 class="m-0">Đánh giá</h5>
+                        <p>10<a class="text-decoration-none" href="#">(chi tiết)</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="ad-main m-5 bg-white p-3">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 p-3 mb-3 border-bottom">
+                    <h1 class="h2">Doanh thu trong tuần</h1>
+                    <div class="btn-toolbar mb-2 mb-md-0">
+                        <div class="btn-group me-2">
+                            <button type="button" class="btn btn-sm btn-outline-secondary">
+                                Share
+                            </button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary">
+                                Export
+                            </button>
+                        </div>
+                        <button type="button"
+                                class="btn btn-sm btn-outline-secondary dropdown-toggle">
+                            <span data-feather="calendar"></span>
+                            This week
+                        </button>
+                    </div>
+                </div>
+                <canvas class="my-4 w-100 p-3"
+                        id="myChart"
+                        width="900"
+                        height="380"></canvas>
+
+                <br />
+                <div class="row p-3">
+                    <div class="col-8 p-3">
+                        <h4>Đơn hàng mới</h4>
+                        <hr />
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Khách hàng</th>
+                                    <th scope="col">Số điện thoại</th>
+                                    <th scope="col">Vai trò</th>
+                                    <th scope="col">Thời gian</th>
+                                    <th scope="col">Tổng tiền</th>
+                                    <th scope="col">Trạng thái</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>UIT</td>
+                                    <td>0123456789</td>
+                                    <td>Khách</td>
+                                    <td>20/11/2023</td>
+                                    <td>200.000đ</td>
+                                    <td>Chờ duyệt</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">2</th>
+                                    <td>UIT</td>
+                                    <td>0123456789</td>
+                                    <td>Khách</td>
+                                    <td>20/11/2023</td>
+                                    <td>200.000đ</td>
+                                    <td>Chờ duyệt</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">3</th>
+                                    <td>UIT</td>
+                                    <td>0123456789</td>
+                                    <td>Khách</td>
+                                    <td>20/11/2023</td>
+                                    <td>200.000đ</td>
+                                    <td>Chờ duyệt</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">4</th>
+                                    <td>UIT</td>
+                                    <td>0123456789</td>
+                                    <td>Khách</td>
+                                    <td>20/11/2023</td>
+                                    <td>200.000đ</td>
+                                    <td>Chờ duyệt</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="col-4 p-3" style="border-left: 1px solid #cccccc">
+                        <h4>Top sách bán chạy</h4>
+                        <hr />
+                        <table class="table table-striped">
+                            <tbody>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>
+                                        <img src="~/images/harrypotter.png"
+                                             class="img-size50"
+                                             alt="" />
+                                    </td>
+                                    <td>
+                                        <label for="purchases" class="text-bold">100 lượt mua</label><br />
+                                        <label for="book-name">Harry poter</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">2</th>
+                                    <td>
+                                        <img src="~/images/harrypotter.png"
+                                             class="img-size50"
+                                             alt="" />
+                                    </td>
+                                    <td>
+                                        <label for="purchases" class="text-bold">99 lượt mua</label><br />
+                                        <label for="book-name">Harry poter</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">3</th>
+                                    <td>
+                                        <img src="~/images/harrypotter.png"
+                                             class="img-size50"
+                                             alt="" />
+                                    </td>
+                                    <td>
+                                        <label for="purchases" class="text-bold">98 lượt mua</label><br />
+                                        <label for="book-name">Harry poter</label>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>

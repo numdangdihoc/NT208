@@ -1,0 +1,136 @@
+﻿@model IEnumerable<Bookstore.Models.Book>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+            <div class="ad-order m-5 bg-white">
+                <div class="d-flex justify-content-between">
+                    
+                    <form class="search-form">
+                        <input class="form-control search-text"
+                               type="text"
+                               placeholder="Tìm kiếm đơn hàng..." />
+                        <button class="search-button">
+                            <i class="fas fa-search font-size-icon"></i>
+                        </button>
+                    </form>
+                </div>
+                <hr />
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Khách hàng</th>
+                            <th scope="col">Số điện thoại</th>
+                            <th scope="col">Vai trò</th>
+                            <th scope="col">Ngày đặt hàng</th>
+                            <th scope="col">Tổng tiền</th>
+                            <th scope="col">Trạng thái</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>UIT</td>
+                            <td>0123456789</td>
+                            <td>Khách</td>
+                            <td>20/11/2023</td>
+                            <td>200.000đ</td>
+                            <td>Chờ duyệt</td>
+                            <td>
+                                <button class="btn btn-primary">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="btn btn-primary">
+                                    <i class="fas fa-print"></i>
+                                </button>
+                                <button class="btn btn-secondary">
+                                    <i class="fas fa-trash-alt"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>UIT</td>
+                            <td>0123456789</td>
+                            <td style="color: #146ef4">Thành viên</td>
+                            <td>20/11/2023</td>
+                            <td>200.000đ</td>
+                            <td style="color: #146ef4">Đang giao</td>
+                            <td>
+                                <button class="btn btn-primary">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="btn btn-primary">
+                                    <i class="fas fa-print"></i>
+                                </button>
+                                <button class="btn btn-secondary">
+                                    <i class="fas fa-trash-alt"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>UIT</td>
+                            <td>0123456789</td>
+                            <td style="color: #146ef4">Thành viên</td>
+                            <td>20/11/2023</td>
+                            <td>200.000đ</td>
+                            <td style="color: red">Đã huỷ</td>
+                            <td>
+                                <button class="btn btn-primary">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="btn btn-primary">
+                                    <i class="fas fa-print"></i>
+                                </button>
+                                <button class="btn btn-secondary">
+                                    <i class="fas fa-trash-alt"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">4</th>
+                            <td>UIT</td>
+                            <td>0123456789</td>
+                            <td>Khách</td>
+                            <td>20/11/2023</td>
+                            <td>200.000đ</td>
+                            <td style="color: green">Đã giao</td>
+                            <td>
+                                <button class="btn btn-primary">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="btn btn-primary">
+                                    <i class="fas fa-print"></i>
+                                </button>
+                                <button class="btn btn-secondary">
+                                    <i class="fas fa-trash-alt"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div aria-label="Page navigation example">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        <li class="page-item active">
+                            <a class="page-link" href="#">1</a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>

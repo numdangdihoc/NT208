@@ -1,0 +1,97 @@
+﻿@model IEnumerable<Bookstore.Models.Book>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="m-3">
+    <button class="btn btn-primary" onclick="location.href='@Url.Action("Create")'">Create New</button>
+</div>
+    <table class="table">
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Image
+            </th>
+            <th>
+               Price
+            </th>
+            <th>
+                Author
+               
+            </th>
+            <th>
+                Promotionprice
+          
+            </th>
+            <th>
+                ViewCount
+               
+            </th>
+            <th>
+                Description
+            </th>
+            <th>
+                Detail
+            </th>
+            <th>
+                Quantity
+            </th>
+            <th>
+                Status
+            </th>
+            <th>
+                Category
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.book_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.book_image)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.book_price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.book_author)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.book_promotionprice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.book_viewcount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.book_description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.book_detail)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.book_quantity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.book_status)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BookCategory.cate_name)
+                </td>
+                <td>
+                    <button onclick="location.href='@Url.Action("Edit", new { id = item.book_id })'" class="btn btn-primary">Edit</button> |
+                    <button onclick="location.href='@Url.Action("Details", new { id = item.book_id })'" class="btn btn-info">Details</button> |
+                    <button onclick="location.href='@Url.Action("Delete", new { id = item.book_id })'" class="btn btn-danger">Delete</button>
+                </td>
+
+            </tr>
+        }
+
+    </table>

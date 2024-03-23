@@ -1,0 +1,838 @@
+﻿@model List<Bookstore.Models.Book>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/UserLayout.cshtml";
+}
+
+<main>
+
+    <!---------------------------------
+                  SLIDER
+    ---------------------------------->
+    <div id="carouselExampleIndicators"
+         class="carousel slide px-2"
+         data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button"
+                    data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide-to="0"
+                    class="active"
+                    aria-current="true"
+                    aria-label="Slide 1"></button>
+            <button type="button"
+                    data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide-to="1"
+                    aria-label="Slide 2"></button>
+            <button type="button"
+                    data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide-to="2"
+                    aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="../images/slide1.png"
+                     class="d-block w-100 h-auto"
+                     alt="..." />
+            </div>
+            <div class="carousel-item">
+                <img src="~/wwwroot/image/book1.jpg" class="d-block w-100" alt="..." />
+            </div>
+            <div class="carousel-item">
+                <img src="~/wwwroot/image/book4.jpg" class="d-block w-100" alt="..." />
+            </div>
+        </div>
+        <button class="carousel-control-prev"
+                type="button"
+                data-bs-target="#carouselExampleIndicators"
+                data-bs-slide="prev">
+            <span aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next"
+                type="button"
+                data-bs-target="#carouselExampleIndicators"
+                data-bs-slide="next">
+            <span aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <div class="ad-service d-flex justify-content-around align-items-center py-4 border-solid-b mx-2">
+        <div class="ad-service-price d-flex justify-content-between align-items-center">
+            <div class="price-icon bg-primary p-4 rounded-circle">
+                <i class="fas fa-gift font-size-icon50"></i>
+            </div>
+            <p class="text-l mx-4 text-bold m-0">Giá tốt nhất</p>
+        </div>
+        <div class="ad-service-price d-flex justify-content-between align-items-center">
+            <div class="price-icon bg-primary p-4 rounded-circle">
+                <i class="fas fa-gift font-size-icon50"></i>
+            </div>
+            <p class="text-l mx-4 text-bold m-0">Giao hàng toàn quốc</p>
+        </div>
+        <div class="ad-service-price d-flex justify-content-between align-items-center">
+            <div class="price-icon bg-primary p-4 rounded-circle">
+                <i class="fas fa-gift font-size-icon50"></i>
+            </div>
+            <p class="text-l mx-4 text-bold m-0">Dễ dàng đổi trả</p>
+        </div>
+    </div>
+    <!---------------------------------
+                  CONTENT
+    ---------------------------------->
+    <div class="content-home bg-bwhite py-100">
+        <div class="home-sallers d-flex justify-content-between mx-60">
+            <div class="home-saller w-75">
+                <div class="home-saller-title d-flex justify-content-between">
+                    <span class="saller-title text-xl text-bold d-flex m-0">Ưu đãi trong ngày</span>
+                </div>
+                <div class="home-saller-items d-flex flex-wrap">
+
+                    @for (int i = 0; i < 4 && i < Model.Count; i++)
+                    {
+                        var book = Model[i];
+                        <a href="@Url.Action("DetailBook","Home",new {id = book.book_id})" class="card-product w-25 px-20 my-30">
+                            <div>
+                                <img src="@Url.Content($"~/wwwroot/image/{book.book_image}")"
+                                     class="card-img-top w-100 product-hover"
+                                     alt="..." />
+                                <p class="card-title mt-3 my-2">
+                                    @book.book_name
+                                </p>
+                                <p class="card-text my-2">@book.book_author</p>
+                                <div class="eva-start d-flex">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <div class="card-prices d-flex align-items-end">
+                                    <span class="card-price-dis text-decoration-line-through">@book.book_price đ</span>
+                                    <span class="card-price mx-2">@book.book_promotionprice </span>
+                                </div>
+                            </div>
+                        </a>
+                    }
+
+                </div>
+            </div>
+         
+            <div class="home-bestSaller w-25 d-flex flex-column justify-content-between">
+                <span class="saller-title text-l text-bold m-0 pt-4">Best Saller</span>
+                <div class="bestSaller-item mt-30">
+                    <a href="@Url.Action("DetailBook","Home",new {id = Model[2].book_id})" class="card-product-row d-flex w-100" >
+                        <img src="@Url.Content($"~/wwwroot/image/{Model[2].book_image}")" alt="" class="img-size120" />
+                        <div class="pl-4">
+                            <p class="card-title-row mt-3 my-2">
+                                @Model[2].book_name
+                            </p>
+                            <div class="eva-start d-flex">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p class="card-text my-2">@Model[2].book_author</p>
+                            <div class="card-prices d-flex align-items-end">
+                                <span class="card-price-dis text-decoration-line-through">@Model[2].book_price</span>
+                                <span class="card-price mx-2">@Model[2].book_promotionprice đ</span>
+                            </div>
+                        </div>
+                    </a>
+                    <img src="../images/harrypotter-bg.png"
+                         alt=""
+                         class="w-100 mt-30" />
+                </div>
+            </div>
+        </div>
+
+        <div class="home-cate d-flex my-50 flex-wrap mx-100">
+            <div class="img-container w-50 p-3">
+                <img src="../images/cate-bg.png" alt="" class="img-height3 ">
+                <div class="cate-name">
+                    <a class="text-m text-bold text-decoration-none">Khoa học viễn tưởng</a>
+                    <p class="text-m">50 sản phẩm</p>
+                </div>
+            </div>
+            <div class="img-container w-20 p-3">
+                <img src="../images/cate-bg.png" alt="" class="img-height3 ">
+                <div class="cate-name">
+                    <a class="text-m text-bold text-decoration-none">Lãng mạn</a>
+                    <p class="text-m">50 sản phẩm</p>
+                </div>
+            </div>
+            <div class="img-container w-30 p-3">
+                <img src="../images/cate-bg.png" alt="" class="img-height3 ">
+                <div class="cate-name">
+                    <a class="text-m text-bold text-decoration-none">Trẻ em</a>
+                    <p class="text-m">50 sản phẩm</p>
+                </div>
+            </div>
+            <div class="img-container w-20 p-3">
+                <img src="../images/cate-bg.png" alt="" class="img-height3 ">
+                <div class="cate-name">
+                    <a class="text-m text-bold text-decoration-none">Tiểu thuyết</a>
+                    <p class="text-m">50 sản phẩm</p>
+                </div>
+            </div>
+            <div class="img-container w-40 p-3">
+                <img src="../images/cate-bg.png" alt="" class="img-height3 ">
+                <div class="cate-name">
+                    <a class="text-m text-bold text-decoration-none">Tiếng anh</a>
+                    <p class="text-m">50 sản phẩm</p>
+                </div>
+            </div>
+            <div class="img-container w-40 p-3">
+                <img src="../images/cate-bg.png" alt="" class="img-height3 ">
+                <div class="cate-name">
+                    <a class="text-m text-bold text-decoration-none">Kĩ năng sống</a>
+                    <p class="text-m">50 sản phẩm</p>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="home-newBook">
+            <div class="home-newBook-title d-flex justify-content-between align-items-center mt-5">
+                <span class="newBook-title text-xl text-bold d-flex w-85 m-0">Sách mới</span>
+                <div class="btn btn-primary rounded-pill mt-5">
+                    <a href="#" class="text-m text-white text-decoration-none mx-3">Khám phá ngay</a>
+                </div>
+            </div>
+
+            @{  
+                Random rand = new Random();
+                }
+
+            <div class="home-newBook-items p-30x d-flex flex-wrap">
+                @for (int i = 0; i < 8; i++)
+                {
+
+
+                    // Tạo số nguyên ngẫu nhiên từ 1 đến 8
+                    int randomNumber = rand.Next(0, Model.Count - 1);
+                    var book = Model[randomNumber];
+                    <a href="@Url.Action("DetailBook","Home",new {id = book.book_id})" class="card-product w-25 px-20 my-30">
+                        <div>
+                            <img src="@Url.Content($"~/wwwroot/image/{book.book_image}")"
+                                 class="card-img-top w-100 product-hover"
+                                 alt="..." />
+                            <p class="card-title mt-3 my-2">
+                                @book.book_name
+                            </p>
+                            <p class="card-text my-2">@book.book_author</p>
+                            <div class="eva-start d-flex">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div class="card-prices d-flex align-items-end">
+                                <span class="card-price-dis text-decoration-line-through">@book.book_price đ</span>
+                                <span class="card-price mx-2">@book.book_promotionprice </span>
+                            </div>
+                        </div>
+                    </a>
+                }
+            </div>
+        </div>
+
+        <img src="../images/home-1.png" class="w-100 p-3 my-30" alt="" />
+        <div class="home-outstandingCate mx-60">
+            <div class="novel mt-4">
+                <span class="cateBook-title text-l text-bold d-flex w-100 m-0">Tiểu thuyết</span>
+                <div class="novel-items d-flex justify-content-between align-items-center">
+                    <div class="novel-img w-25">
+                        <img class="img-fluid w-100 h-100"
+                             src="../images/cate-items.jpg"
+                             alt="" />
+                    </div>
+                    <div class="novel-item w-75 d-flex">
+                        <div class="card-product w-25 px-20 my-30">
+                            <img src="../images/harrypotter.png"
+                                 class="card-img-top w-100"
+                                 alt="..." />
+                            <p class="card-title mt-3 my-2">
+                                Harry Potter và hòn đá phù thuỷ
+                            </p>
+                            <p class="card-text my-2">J.K Rowling</p>
+                            <div class="eva-start d-flex">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p class="card-price my-2 mb-0">100.000đ</p>
+                        </div>
+
+                        <div class="card-product w-25 px-20 my-30">
+                            <img src="../images/harrypotter.png"
+                                 class="card-img-top w-100"
+                                 alt="..." />
+                            <p class="card-title mt-3 my-2">
+                                Harry Potter và hòn đá phù thuỷ
+                            </p>
+                            <p class="card-text my-2">J.K Rowling</p>
+                            <div class="eva-start d-flex">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p class="card-price my-2 mb-0">100.000đ</p>
+                        </div>
+
+                        <div class="card-product w-25 px-20 my-30">
+                            <img src="../images/harrypotter.png"
+                                 class="card-img-top w-100"
+                                 alt="..." />
+                            <p class="card-title mt-3 my-2">
+                                Harry Potter và hòn đá phù thuỷ
+                            </p>
+                            <p class="card-text my-2">J.K Rowling</p>
+                            <div class="eva-start d-flex">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p class="card-price my-2 mb-0">100.000đ</p>
+                        </div>
+
+                        <div class="card-product w-25 px-20 my-30">
+                            <img src="../images/harrypotter.png"
+                                 class="card-img-top w-100"
+                                 alt="..." />
+                            <p class="card-title mt-3 my-2">
+                                Harry Potter và hòn đá phù thuỷ
+                            </p>
+                            <p class="card-text my-2">J.K Rowling</p>
+                            <div class="eva-start d-flex">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p class="card-price my-2 mb-0">100.000đ</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="novel mt-4">
+                <span class="cateBook-title text-l text-bold d-flex w-100 m-0">Tiểu thuyết</span>
+                <div class="novel-items d-flex justify-content-between align-items-center">
+                    <div class="novel-img w-25">
+                        <img class="img-fluid w-100 h-100"
+                             src="../images/cate-items.jpg"
+                             alt="" />
+                    </div>
+                    <div class="novel-item w-85 d-flex">
+                        <div class="card-product w-25 px-20 my-30">
+                            <img src="../images/harrypotter.png"
+                                 class="card-img-top w-100"
+                                 alt="..." />
+                            <p class="card-title mt-3 my-2">
+                                Harry Potter và hòn đá phù thuỷ
+                            </p>
+                            <p class="card-text my-2">J.K Rowling</p>
+                            <div class="eva-start d-flex">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p class="card-price my-2 mb-0">100.000đ</p>
+                        </div>
+
+                        <div class="card-product w-25 px-20 my-30">
+                            <img src="../images/harrypotter.png"
+                                 class="card-img-top w-100"
+                                 alt="..." />
+                            <p class="card-title mt-3 my-2">
+                                Harry Potter và hòn đá phù thuỷ
+                            </p>
+                            <p class="card-text my-2">J.K Rowling</p>
+                            <div class="eva-start d-flex">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p class="card-price my-2 mb-0">100.000đ</p>
+                        </div>
+
+                        <div class="card-product w-25 px-20 my-30">
+                            <img src="../images/harrypotter.png"
+                                 class="card-img-top w-100"
+                                 alt="..." />
+                            <p class="card-title mt-3 my-2">
+                                Harry Potter và hòn đá phù thuỷ
+                            </p>
+                            <p class="card-text my-2">J.K Rowling</p>
+                            <div class="eva-start d-flex">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p class="card-price my-2 mb-0">100.000đ</p>
+                        </div>
+
+                        <div class="card-product w-25 px-20 my-30">
+                            <img src="../images/harrypotter.png"
+                                 class="card-img-top w-100"
+                                 alt="..." />
+                            <p class="card-title mt-3 my-2">
+                                Harry Potter và hòn đá phù thuỷ
+                            </p>
+                            <p class="card-text my-2">J.K Rowling</p>
+                            <div class="eva-start d-flex">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p class="card-price my-2 mb-0">100.000đ</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="novel mt-4">
+                <span class="cateBook-title text-l text-bold d-flex w-100 m-0">Tiểu thuyết</span>
+                <div class="novel-items d-flex justify-content-between align-items-center">
+                    <div class="novel-img w-25">
+                        <img class="img-fluid w-100 h-100"
+                             src="../images/cate-items.jpg"
+                             alt="" />
+                    </div>
+                    <div class="novel-item w-85 d-flex">
+                        <div class="card-product w-25 px-20 my-30">
+                            <img src="../images/harrypotter.png"
+                                 class="card-img-top w-100"
+                                 alt="..." />
+                            <p class="card-title mt-3 my-2">
+                                Harry Potter và hòn đá phù thuỷ
+                            </p>
+                            <p class="card-text my-2">J.K Rowling</p>
+                            <div class="eva-start d-flex">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p class="card-price my-2 mb-0">100.000đ</p>
+                        </div>
+
+                        <div class="card-product w-25 px-20 my-30">
+                            <img src="../images/harrypotter.png"
+                                 class="card-img-top w-100"
+                                 alt="..." />
+                            <p class="card-title mt-3 my-2">
+                                Harry Potter và hòn đá phù thuỷ
+                            </p>
+                            <p class="card-text my-2">J.K Rowling</p>
+                            <div class="eva-start d-flex">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p class="card-price my-2 mb-0">100.000đ</p>
+                        </div>
+
+                        <div class="card-product w-25 px-20 my-30">
+                            <img src="../images/harrypotter.png"
+                                 class="card-img-top w-100"
+                                 alt="..." />
+                            <p class="card-title mt-3 my-2">
+                                Harry Potter và hòn đá phù thuỷ
+                            </p>
+                            <p class="card-text my-2">J.K Rowling</p>
+                            <div class="eva-start d-flex">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p class="card-price my-2 mb-0">100.000đ</p>
+                        </div>
+
+                        <div class="card-product w-25 px-20 my-30">
+                            <img src="../images/harrypotter.png"
+                                 class="card-img-top w-100"
+                                 alt="..." />
+                            <p class="card-title mt-3 my-2">
+                                Harry Potter và hòn đá phù thuỷ
+                            </p>
+                            <p class="card-text my-2">J.K Rowling</p>
+                            <div class="eva-start d-flex">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p class="card-price my-2 mb-0">100.000đ</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <img src="../images/home-2.png" class="w-100 p-3 my-30" alt="" />
+        <div class="home-topBook mx-30 mb-5">
+            <div class="home-topBook-title d-flex justify-content-between mt-5 align-items-center">
+                <span class="topBook-title text-xl text-bold d-flex w-90 m-0">Sách yêu thích</span>
+                <div class="btn btn-primary rounded-pill mt-5">
+                    <a href="#" class="text-m text-white text-decoration-none mx-3">Xem thêm</a>
+                </div>
+            </div>
+
+            <div class="home-topBook-items d-flex flex-wrap">
+                <div class="card-product-row d-flex my-5 px-5 w-25">
+                    <img src="../images/harrypotter.png" alt="" class="img-size80" />
+                    <div class="pl-4">
+                        <p class="card-title-row mt-3 my-2">
+                            Harry Potter và hòn đá phù thuỷ
+                        </p>
+                        <div class="eva-start d-flex">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="card-text my-2">J.K Rowling</p>
+                    </div>
+                </div>
+
+                <div class="card-product-row d-flex my-5 px-5 w-25">
+                    <img src="../images/harrypotter.png" alt="" class="img-size80" />
+                    <div class="pl-4">
+                        <p class="card-title-row mt-3 my-2">
+                            Harry Potter và hòn đá phù thuỷ
+                        </p>
+                        <div class="eva-start d-flex">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="card-text my-2">J.K Rowling</p>
+                    </div>
+                </div>
+
+                <div class="card-product-row d-flex my-5 px-5 w-25">
+                    <img src="../images/harrypotter.png" alt="" class="img-size80" />
+                    <div class="pl-4">
+                        <p class="card-title-row mt-3 my-2">
+                            Harry Potter và hòn đá phù thuỷ
+                        </p>
+                        <div class="eva-start d-flex">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="card-text my-2">J.K Rowling</p>
+                    </div>
+                </div>
+
+                <div class="card-product-row d-flex my-5 px-5 w-25">
+                    <img src="../images/harrypotter.png" alt="" class="img-size80" />
+                    <div class="pl-4">
+                        <p class="card-title-row mt-3 my-2">
+                            Harry Potter và hòn đá phù thuỷ
+                        </p>
+                        <div class="eva-start d-flex">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="card-text my-2">J.K Rowling</p>
+                    </div>
+                </div>
+
+                <div class="card-product-row d-flex my-5 px-5 w-25">
+                    <img src="../images/harrypotter.png" alt="" class="img-size80" />
+                    <div class="pl-4">
+                        <p class="card-title-row mt-3 my-2">
+                            Harry Potter và hòn đá phù thuỷ
+                        </p>
+                        <div class="eva-start d-flex">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="card-text my-2">J.K Rowling</p>
+                    </div>
+                </div>
+
+                <div class="card-product-row d-flex my-5 px-5 w-25">
+                    <img src="../images/harrypotter.png" alt="" class="img-size80" />
+                    <div class="pl-4">
+                        <p class="card-title-row mt-3 my-2">
+                            Harry Potter và hòn đá phù thuỷ
+                        </p>
+                        <div class="eva-start d-flex">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="card-text my-2">J.K Rowling</p>
+                    </div>
+                </div>
+
+                <div class="card-product-row d-flex my-5 px-5 w-25">
+                    <img src="../images/harrypotter.png" alt="" class="img-size80" />
+                    <div class="pl-4">
+                        <p class="card-title-row mt-3 my-2">
+                            Harry Potter và hòn đá phù thuỷ
+                        </p>
+                        <div class="eva-start d-flex">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="card-text my-2">J.K Rowling</p>
+                    </div>
+                </div>
+
+                <div class="card-product-row d-flex my-5 px-5 w-25">
+                    <img src="../images/harrypotter.png" alt="" class="img-size80" />
+                    <div class="pl-4">
+                        <p class="card-title-row mt-3 my-2">
+                            Harry Potter và hòn đá phù thuỷ
+                        </p>
+                        <div class="eva-start d-flex">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="card-text my-2">J.K Rowling</p>
+                    </div>
+                </div>
+                <div class="card-product-row d-flex my-5 px-5 w-25">
+                    <img src="../images/harrypotter.png" alt="" class="img-size80" />
+                    <div class="pl-4">
+                        <p class="card-title-row mt-3 my-2">
+                            Harry Potter và hòn đá phù thuỷ
+                        </p>
+                        <div class="eva-start d-flex">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="card-text my-2">J.K Rowling</p>
+                    </div>
+                </div>
+
+                <div class="card-product-row d-flex my-5 px-5 w-25">
+                    <img src="../images/harrypotter.png" alt="" class="img-size80" />
+                    <div class="pl-4">
+                        <p class="card-title-row mt-3 my-2">
+                            Harry Potter và hòn đá phù thuỷ
+                        </p>
+                        <div class="eva-start d-flex">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="card-text my-2">J.K Rowling</p>
+                    </div>
+                </div>
+
+                <div class="card-product-row d-flex my-5 px-5 w-25">
+                    <img src="../images/harrypotter.png" alt="" class="img-size80" />
+                    <div class="pl-4">
+                        <p class="card-title-row mt-3 my-2">
+                            Harry Potter và hòn đá phù thuỷ
+                        </p>
+                        <div class="eva-start d-flex">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="card-text my-2">J.K Rowling</p>
+                    </div>
+                </div>
+
+                <div class="card-product-row d-flex my-5 px-5 w-25">
+                    <img src="../images/harrypotter.png" alt="" class="img-size80" />
+                    <div class="pl-4">
+                        <p class="card-title-row mt-3 my-2">
+                            Harry Potter và hòn đá phù thuỷ
+                        </p>
+                        <div class="eva-start d-flex">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="card-text my-2">J.K Rowling</p>
+                    </div>
+                </div>
+
+                <div class="card-product-row d-flex my-5 px-5 w-25">
+                    <img src="../images/harrypotter.png" alt="" class="img-size80" />
+                    <div class="pl-4">
+                        <p class="card-title-row mt-3 my-2">
+                            Harry Potter và hòn đá phù thuỷ
+                        </p>
+                        <div class="eva-start d-flex">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="card-text my-2">J.K Rowling</p>
+                    </div>
+                </div>
+
+                <div class="card-product-row d-flex my-5 px-5 w-25">
+                    <img src="../images/harrypotter.png" alt="" class="img-size80" />
+                    <div class="pl-4">
+                        <p class="card-title-row mt-3 my-2">
+                            Harry Potter và hòn đá phù thuỷ
+                        </p>
+                        <div class="eva-start d-flex">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="card-text my-2">J.K Rowling</p>
+                    </div>
+                </div>
+
+                <div class="card-product-row d-flex my-5 px-5 w-25">
+                    <img src="../images/harrypotter.png" alt="" class="img-size80" />
+                    <div class="pl-4">
+                        <p class="card-title-row mt-3 my-2">
+                            Harry Potter và hòn đá phù thuỷ
+                        </p>
+                        <div class="eva-start d-flex">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="card-text my-2">J.K Rowling</p>
+                    </div>
+                </div>
+
+                <div class="card-product-row d-flex my-5 px-5 w-25">
+                    <img src="../images/harrypotter.png" alt="" class="img-size80" />
+                    <div class="pl-4">
+                        <p class="card-title-row mt-3 my-2">
+                            Harry Potter và hòn đá phù thuỷ
+                        </p>
+                        <div class="eva-start d-flex">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="card-text my-2">J.K Rowling</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!---------------------------------
+                      FSLIDER
+        ---------------------------------->
+        <div id="carouselExampleIndicators2"
+             class="carousel slide m-3 mt-5"
+             data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button"
+                        data-bs-target="#carouselExampleIndicators2"
+                        data-bs-slide-to="0"
+                        class="active"
+                        aria-current="true"
+                        aria-label="Slide 1"></button>
+                <button type="button"
+                        data-bs-target="#carouselExampleIndicators2"
+                        data-bs-slide-to="1"
+                        aria-label="Slide 2"></button>
+                <button type="button"
+                        data-bs-target="#carouselExampleIndicators2"
+                        data-bs-slide-to="2"
+                        aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="~/wwwroot/image/book4.jpg"
+                         class="d-block w-100 h-auto"
+                         alt="..." />
+                </div>
+                <div class="carousel-item">
+                    <img src="~/wwwroot/image/book3.jpg"
+                         class="d-block w-100"
+                         alt="..." />
+                </div>
+                <div class="carousel-item">
+                    <img src="~/wwwroot/image/book1.jpg"
+                         class="d-block w-100"
+                         alt="..." />
+                </div>
+            </div>
+            <button class="carousel-control-prev"
+                    type="button"
+                    data-bs-target="#carouselExampleIndicators2"
+                    data-bs-slide="prev">
+                <span aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next"
+                    type="button"
+                    data-bs-target="#carouselExampleIndicators2"
+                    data-bs-slide="next">
+                <span aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+</main>

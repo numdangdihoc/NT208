@@ -1,0 +1,39 @@
+﻿@model PagedList.IPagedList<Bookstore.Models.Book>
+@using PagedList.Mvc
+
+@{
+    ViewBag.Title = "Search Results";
+}
+
+@if (Model.Count > 0)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Tên sách</th>
+                <th>Tác giả</th>
+                <!-- Thêm các cột thông tin khác của sách nếu cần -->
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var book in Model)
+            {
+                <tr>
+                    <td>@book.book_name</td>
+                    <td>@book.book_author</td>
+                    <!-- Hiển thị thông tin khác của sách nếu cần -->
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <!-- Hiển thị phân trang -->
+<div>
+    @Html.PagedListPager(Model, page => Url.Action("SearchByName", new { page, name = ViewBag.search }))
+
+</div>
+}
+else
+{
+    <p>Không tìm thấy kết quả nào cho "@ViewBag.search".</p>
+}

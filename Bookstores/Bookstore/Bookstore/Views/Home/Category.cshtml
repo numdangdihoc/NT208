@@ -1,0 +1,321 @@
+﻿
+@{
+    ViewBag.Title = "Category";
+    Layout = "~/Views/Shared/UserLayout.cshtml";
+}
+
+<div class="cate-content">
+    <div class="content-nav d-flex justify-content-between align-items-center mx-2 h-160">
+        <label for="cate-title" class="text-xl text-bold">Tiểu thuyết</label>
+        <label for="cate-link d-flex ">
+            <a href="/html/index.html" class="dis-link text-m">Trang chủ</a>
+            <i class="fas fa-arrow-right mx-3 color-gray"></i>
+            <a href="#" class="dis-link text-m">Danh mục</a>
+            <i class="fas fa-arrow-right mx-3 color-gray"></i>
+            <a href="#" class="text-m">Tiểu thuyết</a>
+        </label>
+    </div>
+
+    <div class="cate-content-main d-flex justify-content-around">
+        <div class="cate-content-sidebar d-flex flex-column">
+            <div class="ct-sidebar-category border-solid mb-4 p-30">
+                <h3>Thể loại</h3>
+                <hr class="hr" />
+                <div class="btn-items-cate d-flex my-2">
+                    <input type="checkbox" />
+                    <label for="btn-items-cate" class="mx-3 text-m">Tiểu thuyết</label>
+                </div>
+                <div class="btn-items-cate d-flex my-2">
+                    <input type="checkbox" />
+                    <label for="btn-items-cate" class="mx-3 text-m">Tiểu thuyết</label>
+                </div>
+                <div class="btn-items-cate d-flex my-2">
+                    <input type="checkbox" />
+                    <label for="btn-items-cate" class="mx-3 text-m">Tiểu thuyết</label>
+                </div>
+                <div class="btn-items-cate d-flex my-2">
+                    <input type="checkbox" />
+                    <label for="btn-items-cate" class="mx-3 text-m">Tiểu thuyết</label>
+                </div>
+                <div class="btn-items-cate d-flex my-2">
+                    <input type="checkbox" />
+                    <label for="btn-items-cate" class="mx-3 text-m">Tiểu thuyết</label>
+                </div>
+                <div class="btn-more d-flex my-2">
+                    <a href="#" class="text-decoration-none text-m">Xem thêm</a>
+                    <i class="fas fa-chevron-down icon-hover"
+                       style="
+                  font-size: 16px;
+                  margin-top: 5px;
+                  margin-left: 5px;
+                  color: #146fe4;
+                "></i>
+                </div>
+            </div>
+
+            <div class="ct-sidebar-author border-solid my-4 p-30">
+                <h3>Tác giả</h3>
+                <hr class="hr" />
+                <div class="btn-items-author d-flex my-2">
+                    <input type="checkbox" />
+                    <label for="btn-items-author" class="mx-3 text-m">J.K Rowling</label>
+                </div>
+                <div class="btn-items-author d-flex my-2">
+                    <input type="checkbox" />
+                    <label for="btn-items-author" class="mx-3 text-m">J.K Rowling</label>
+                </div>
+                <div class="btn-items-author d-flex my-2">
+                    <input type="checkbox" />
+                    <label for="btn-items-author" class="mx-3 text-m">J.K Rowling</label>
+                </div>
+                <div class="btn-items-author d-flex my-2">
+                    <input type="checkbox" />
+                    <label for="btn-items-author" class="mx-3 text-m">J.K Rowling</label>
+                </div>
+                <div class="btn-items-author d-flex my-2">
+                    <input type="checkbox" />
+                    <label for="btn-items-author" class="mx-3 text-m">J.K Rowling</label>
+                </div>
+                <div class="btn-more d-flex my-2">
+                    <a href="#" class="text-decoration-none text-m">Xem thêm</a>
+                    <i class="fas fa-chevron-down icon-hover"
+                       style="
+                  font-size: 16px;
+                  margin-top: 5px;
+                  margin-left: 5px;
+                  color: #146fe4;
+                "></i>
+                </div>
+            </div>
+
+            <div class="ct-sidebar-price border-solid my-4 p-30">
+                <h3>Giá</h3>
+                <hr class="hr" />
+                <div class="cate-btn-items d-flex my-2">
+                    <input type="checkbox" />
+                    <label for="btn-items" class="mx-3 text-m">0 - 100.000đ</label>
+                </div>
+                <div class="cate-btn-items d-flex my-2">
+                    <input type="checkbox" />
+                    <label for="btn-items" class="mx-3 text-m">100.000 - 200.000đ</label>
+                </div>
+                <div class="cate-btn-items d-flex my-2">
+                    <input type="checkbox" />
+                    <label for="btn-items" class="mx-3 text-m">200.000 - 300.000đ</label>
+                </div>
+                <div class="cate-btn-items d-flex my-2">
+                    <input type="checkbox" />
+                    <label for="btn-items" class="mx-3 text-m">300.000 - 400.000đ</label>
+                </div>
+                <div class="cate-btn-items d-flex my-2">
+                    <input type="checkbox" />
+                    <label for="btn-items" class="mx-3 text-m">Trên 400.000đ</label>
+                </div>
+                <p class="my-4 text-m">Tự chọn khoảng giá</p>
+                <div class="choose-price d-flex">
+                    <input type="text" placeholder="0" />
+                    <p class="text-m mx-2">-</p>
+                    <input type="text" placeholder="100000" />
+                </div>
+                <button class="btn btn-primary m-0 mt-2 w-100">Áp dụng</button>
+            </div>
+
+            <div class="ct-sidebar-author border-solid my-4 p-30">
+                <h3>Sản phẩm nổi bật</h3>
+                <hr class="hr" />
+                <div class="card-product-row d-flex my-5">
+                    <img src="/images/harrypotter.png" alt="" class="img-size80" />
+                    <div class="pl-3">
+                        <p class="card-title-row mt-3 my-2">
+                            Harry Potter và hòn đá phù thuỷ
+                        </p>
+                        <p class="card-text my-2">J.K Rowling</p>
+                    </div>
+                </div>
+
+                <div class="card-product-row d-flex my-5">
+                    <img src="/images/harrypotter.png" alt="" class="img-size80" />
+                    <div class="pl-3">
+                        <p class="card-title-row mt-3 my-2">
+                            Harry Potter và hòn đá phù thuỷ
+                        </p>
+                        <p class="card-text my-2">J.K Rowling</p>
+                    </div>
+                </div>
+
+                <div class="card-product-row d-flex my-5 mb-0">
+                    <img src="/images/harrypotter.png" alt="" class="img-size80" />
+                    <div class="pl-3">
+                        <p class="card-title-row mt-3 my-2">
+                            Harry Potter và hòn đá phù thuỷ
+                        </p>
+                        <p class="card-text my-2">J.K Rowling</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cate-content-items">
+            <div class="dropdown d-flex">
+                <button class="btn btn-primary text-m dropdown-toggle m-0"
+                        type="button"
+                        id="dropdownMenuButton1"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                    Ngày cập nhật
+                </button>
+                <ul class="dropdown-menu p-2" aria-labelledby="dropdownMenuButton1">
+                    <li>
+                        <a class="dropdown-item text-m"
+                           href="#"
+                           onclick="changeText(this)">Lượt xem</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item text-m"
+                           href="#"
+                           onclick="changeText(this)">Ngày cập nhật</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item text-m"
+                           href="#"
+                           onclick="changeText(this)">Giá tiền</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item text-m"
+                           href="#"
+                           onclick="changeText(this)">Tên sách</a>
+                    </li>
+                </ul>
+            </div>
+            <hr class="hr" />
+            <div class="list-item-card d-flex flex-wrap">
+                <div class="card-product w-25 px-20 my-30">
+                    <img src="/images/harrypotter.png"
+                         class="card-img-top w-100"
+                         alt="..." />
+                    <p class="card-title mt-3 my-2">
+                        Harry Potter và hòn đá phù thuỷ
+                    </p>
+                    <p class="card-text my-2">J.K Rowling</p>
+                    <div class="eva-start d-flex">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="card-price my-2 mb-0">100.000đ</p>
+                </div>
+
+                <div class="card-product w-25 px-20 my-30">
+                    <img src="/images/harrypotter.png"
+                         class="card-img-top w-100"
+                         alt="..." />
+                    <p class="card-title mt-3 my-2">
+                        Harry Potter và hòn đá phù thuỷ
+                    </p>
+                    <p class="card-text my-2">J.K Rowling</p>
+                    <div class="eva-start d-flex">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="card-price my-2 mb-0">100.000đ</p>
+                </div>
+
+                <div class="card-product w-25 px-20 my-30">
+                    <img src="/images/harrypotter.png"
+                         class="card-img-top w-100"
+                         alt="..." />
+                    <p class="card-title mt-3 my-2">
+                        Harry Potter và hòn đá phù thuỷ
+                    </p>
+                    <p class="card-text my-2">J.K Rowling</p>
+                    <div class="eva-start d-flex">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="card-price my-2 mb-0">100.000đ</p>
+                </div>
+
+                <div class="card-product w-25 px-20 my-30">
+                    <img src="/images/harrypotter.png"
+                         class="card-img-top w-100"
+                         alt="..." />
+                    <p class="card-title mt-3 my-2">
+                        Harry Potter và hòn đá phù thuỷ
+                    </p>
+                    <p class="card-text my-2">J.K Rowling</p>
+                    <div class="eva-start d-flex">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="card-price my-2 mb-0">100.000đ</p>
+                </div>
+
+                <div class="card-product w-25 px-20 my-30">
+                    <img src="/images/harrypotter.png"
+                         class="card-img-top w-100"
+                         alt="..." />
+                    <p class="card-title mt-3 my-2">
+                        Harry Potter và hòn đá phù thuỷ
+                    </p>
+                    <p class="card-text my-2">J.K Rowling</p>
+                    <div class="eva-start d-flex">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="card-price my-2 mb-0">100.000đ</p>
+                </div>
+            </div>
+
+            <div aria-label="Page navigation example" class="my-50">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item disabled">
+                        <a class="page-link text-m" href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link text-m" href="#">1</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link text-m" href="#"> 2</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link text-m" href="#">3</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link text-m" href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!---------------------------------
+                SCRIPT
+  ---------------------------------->
+
+<script>
+    function changeText(element) {
+        var buttonText = element.innerText;
+        document.getElementById("dropdownMenuButton1").innerText = buttonText;
+    }
+</script>
+

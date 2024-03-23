@@ -1,0 +1,194 @@
+﻿@model Bookstore.Controllers.HomeController.BookDetailViewModel
+
+@{
+    ViewBag.Title = "Detail Book";
+    Layout = "~/Views/Shared/UserLayout.cshtml";
+}
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+}
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+}
+
+
+<div class="detailbook-content bg-bwhite">
+    <div class="py-5 mx-100">
+        <label for="cate-link d-flex">
+            <a href="/html/index.html" class="dis-link text-m">Trang chủ</a>
+            <i class="fas fa-arrow-right mx-3 color-gray"></i>
+            <a href="/html/index.html" class="dis-link text-m">Tiểu thuyết</a>
+            <i class="fas fa-arrow-right mx-3 color-gray"></i>
+            <a href="#" class="text-m">Harry Potter và hòn đá phù thuỷ</a>
+        </label>
+    </div>
+
+    <div class="detailbook-main mx-100 d-flex justify-content-between">
+        <div class="cate-content-sidebar d-flex flex-column w-20">
+            <div class="ct-sidebar-top5 border-solid p-30 bg-white">
+                <h3 class="text-center">Top 5 trong tuần</h3>
+                <hr class="hr" />
+                @for (int i = 0; i < 5 && i < Model.BookList.Count; i++)
+                {
+                    var book = Model.BookList[i];
+                    <a href="@Url.Action("DetailBook","Home",new {id = book.book_id})" class="card-product-row d-flex my-5">
+                        <img src="@Url.Content($"~/wwwroot/image/{@book.book_image}")" alt="" class="img-size80" />
+                        <div class="pl-3">
+                            <p class="card-title-row mt-3 my-2">
+                                @book.book_name
+                            </p>
+                            <p class="card-text my-2">@book.book_author</p>
+                        </div>
+                    </a>
+                }
+            </div>
+            <div class="my-50 border-solid p-5 bg-white text-semibold">
+                <div class="d-flex nav-menu-phone justify-content-start align-items-center mb-2">
+                    <i class="fas fa-percent icon2"></i>
+                    <p class="m-0 mx-3">Giá ưu đãi</p>
+                </div>
+                <div class="d-flex nav-menu-phone justify-content-start align-items-center my-2">
+                    <i class="fas fa-truck icon2"></i>
+                    <p class="mx-3 m-0">Giao hàng nhanh</p>
+                </div>
+                <div class="d-flex nav-menu-phone justify-content-start align-items-center my-2">
+                    <i class="fas fa-lock icon2"></i>
+                    <p class="mx-3 m-0">100% bảo mật thanh toán</p>
+                </div>
+                <div class="d-flex nav-menu-phone justify-content-start align-items-center my-2">
+                    <i class="fas fa-headphones-alt icon2"></i>
+                    <p class="mx-3 m-0">Hệ thống chăm sóc khách hàng</p>
+                </div>
+                <hr class="hr" />
+                <p class="text-semibold text-m">Phương thức thanh toán</p>
+                <div class="d-flex flex-wrap">
+                    <img src="/images/money.png" alt="" class="img-20 mx-2" />
+                    <img src="/images/momo.png" alt="" class="img-20 mx-2" />
+                    <img src="/images/VNPay.png" alt="" class="img-20 mx-2" />
+                    <img src="/images/atm-.png" alt="" class="img-20 mx-2" />
+                    <img src="/images/visa.png" alt="" class="img-20 mx-2" />
+                </div>
+            </div>
+        </div>
+
+
+        <div class="detaibook-main-content d-flex flex-column w-75">
+            <div class="d-flex border-solid bg-white">
+                <img src="@Url.Content($"~/wwwroot/image/{Model.BookDetail.book_image}")" alt="" class="w-40 p-30" />
+                <div class="w-60 p-30 pl-0">
+                    <div class="d-flex justify-content-between book-status">
+                        <label for="book-status"
+                               class="text-m text-white bg-primary p-2">@Model.BookDetail.book_status</label>
+                            <div class="btn-group" role="group" aria-label="Basic example">
+                                <button type="button" class="btn btn-light text-m">
+                                    &lt Trước
+                                </button>
+                                <button type="button" class="btn btn-light text-m">
+                                    Sau &gt
+                                </button>
+                            </div>
+                        </div>
+                        <label for="book-name" class="text-bold text-2l">@Model.BookDetail.book_name</label>
+                        <div class="d-flex text-m justify-content-start">
+                            <label for="book-author">@Model.BookDetail.book_author</label>
+                            <label for="book-sold" class="book-sold">Đã bán: @Model.BookDetail.book_viewcount</label>
+                        </div>
+                        <hr class="hr" />
+                        <div class="card-prices d-flex align-items-end">
+                            <span class="card-price-dis text-decoration-line-through">@Model.BookDetail.book_price đ</span>
+                            <span class="card-price mx-2 text-bold">@Model.BookDetail.book_promotionprice đ</span>
+                        </div>
+                        <p class="text-m text-bold my-3">Đặc điểm nổi bật</p>
+                        <label for="book-description"
+                               class="book-description text-m mx-3 mb-4">
+                            @Model.BookDetail.book_detail
+                        </label>
+                        <hr class="hr" />
+                        <div class="detailbook-add-cart d-flex my-4">
+                            <div class="buy-amount d-flex justify-content-center">
+                                <button><i class="fas fa-minus"></i></button>
+                                <input type="text" name="amount" id="amount" value="1" />
+                                <button><i class="fas fa-plus"></i></button>
+                            </div>
+                            @if (Model.BookDetail != null && Model.BookDetail.book_id != null)
+                            {
+                                <a class="btn btn-success" href="@Url.Action("AddToCart", "Home", new { SanPhamID = Model.BookDetail.book_id })">
+                                    <span class="glyphicon glyphicon-shopping-cart"></span> Thêm vào giỏ
+                                </a>
+                            }
+
+
+                        </div>
+                        <hr class="hr" />
+                        <div class="book-cate d-flex text-m">
+                            <p>Thể loại:</p>
+                            <label for="book-cate" class="text-bold mx-3">@Model.BookDetail.BookCategory.cate_name</label>
+                        </div>
+                        <div class="book-cate d-flex text-m">
+                            <p>Tags:</p>
+                            <label for="book-cate" class="text-bold mx-3">
+                                @Model.BookDetail.BookCategory.cate_name
+                            </label>
+                        </div>
+                        <div class="d-flex nav-menu-icon">
+                            <i class="fab fa-facebook font-size-icon24 m-3"></i>
+                            <i class="fab fa-instagram-square font-size-icon24 m-3"></i>
+                            <i class="fab fa-tiktok font-size-icon24 m-3"></i>
+                        </div>
+                    </div>
+            </div>
+
+                <div class="d-flex border-solid bg-white my-50">
+                    <div class="des-review w-25 p-30 border-right">
+                        <ul class="nav nav-pills flex-column mb-auto text-lb">
+                            <li>
+                                <a href="#" class="nav-link link-enable"> Mô tả sách </a>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link"> Chi tiết </a>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link"> Bình luận </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="w-75 summary-book text-m p-30">
+                        <label for="summary-book">
+                            @Model.BookDetail.book_description
+                        </label>
+                    </div>
+                </div>
+
+                <div class="similar-book my-50">
+                    <span class="cateBook-title text-l text-bold d-flex w-100 m-0">Sản phẩm tương tự</span>
+                    <div class="novel-items d-flex justify-content-between align-items-center">
+                        <div class="similar-book-item w-100 d-flex">
+                            @foreach (var book in Model.BookList)
+                            {
+                                <a href="@Url.Action("DetailBook","Home",new {id = book.book_id})" class="card-product w-25 px-20 my-30">
+                                    <img src="@Url.Content($"~/wwwroot/image/{book.book_image}")"
+                                         class="card-img-top w-100"
+                                         alt="..." />
+                                    <p class="card-title mt-3 my-2">
+                                        @book.book_name
+                                    </p>
+                                    <p class="card-text my-2">@book.book_author</p>
+                                    <div class="eva-start d-flex">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <p class="card-price my-2 mb-0">@book.book_price</p>
+                                </a>
+                             }
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>

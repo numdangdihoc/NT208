@@ -1,0 +1,218 @@
+﻿@model List<Bookstore.Models.Cart>
+@{
+    ViewBag.Title = "Order";
+    Layout = "~/Views/Shared/UserLayout.cshtml";
+
+}
+@{ int? total = 0;
+}
+
+<!---------------------------------
+              CONTENT
+---------------------------------->
+<div class="order-content bg-bwhite">
+    <div class="content-nav d-flex justify-content-between align-items-center mx-2 h-160 bg-white">
+        <label for="order-title" class="text-xl text-bold">Thanh toán</label>
+        <label for="order-link d-flex ">
+            <a href="/html/index.html" class="dis-link text-m">Trang chủ</a>
+            <i class="fas fa-arrow-right mx-3 color-gray"></i>
+            <a href="#" class="text-m">Thanh toán</a>
+        </label>
+    </div>
+
+    <div class="order-main p-30 mx-60 my-50 d-flex justify-content-between">
+        <div class="order-info w-70 px-20 pt-0">
+            <div class="order-trans border-fitContent px-30 py-3 mb-5 bg-white">
+                <p class="text-lb mb-4">Chọn hình thức giao hàng</p>
+                <div class="form-check text-m my-2">
+                    <input class="form-check-input border-black"
+                           type="radio"
+                           name="flexRadioDefault"
+                           id="flexRadioDefault1" />
+                    <label class="form-check-fast" for="flexRadioDefault1">
+                        Giao hàng nhanh
+                    </label>
+                </div>
+                <div class="form-check text-m my-2 mb-5">
+                    <input class="form-check-input border-black"
+                           type="radio"
+                           name="flexRadioDefault"
+                           id="flexRadioDefault1" />
+                    <label class="form-check-safe" for="flexRadioDefault1">
+                        Giao hàng Tiết kiệm
+                    </label>
+                </div>
+                <span class="order-delivery text-m d-flex w-100 m-0 text-green">Nhận hàng 21/12/2023, 15h-18h</span>
+
+                <table class="table table-order bg-white align-middle text-center text-m table-borderless">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <label class="fast-delivery" for="flexRadioDefault1">
+                                    Giao hàng nhanh
+                                </label>
+                            </td>
+                            <td>
+                                <label class="delivery-price" for="flexRadioDefault1">
+                                    200 đ
+                                </label>
+                            </td>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-truck mx-3"></i>
+                                    <p class="m-0">Được giao bởi GHN</p>
+                                </div>
+                            </td>
+                        </tr>
+                        @foreach (var cartItem in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <div class="card-product-row d-flex">
+                                        <img src="@Url.Content($"~/wwwroot/image/{cartItem.cart_image}")"
+                                             alt=""
+                                             class="img-size80" />
+                                        <div class="pl-4">
+                                            <p class="card-title-row mt-3 my-2">
+                                               @cartItem.cart_name_book
+                                            </p>
+                                            <p class="card-text my-2">@cartItem.cart_name_book</p>
+                                            <p class="card-text my-2">Số lượng: 1</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>@cartItem.cart_price đ</td>
+                                <td></td>
+                            </tr>
+                            total += cartItem.cart_price;
+                        }
+                        </tbody>
+                </table>
+                <div class="d-flex btn-voucher">
+                    <input type="text"
+                           class="input-style rounded-pill w-25 px-3 py-2"
+                           placeholder="Nhập mã giảm giá..." />
+                    <button class="btn btn-primary rounded-pill w-15 text-m text-bold text-white mx-3">
+                        áp dụng
+                    </button>
+                </div>
+            </div>
+
+            <div class="order-payment border-fitContent px-30 py-3 pb-5 bg-white">
+                <p class="text-lb mb-4">Chọn hình thức thanh toán</p>
+                <div class="form-check text-m my-2 align-items-center">
+                    <input class="form-check-input border-black"
+                           type="radio"
+                           name="flexRadioDefault"
+                           id="flexRadioDefault1" />
+                    <img src="/images/money.png" alt="" class="img-20 mx-3" />
+                    <label class="form-check-fast" for="flexRadioDefault1">
+                        Thanh toán khi nhận hàng
+                    </label>
+                </div>
+                <div class="form-check text-m my-2 align-items-center">
+                    <input class="form-check-input border-black"
+                           type="radio"
+                           name="flexRadioDefault"
+                           id="flexRadioDefault1" />
+                    <img src="/images/momo.png" alt="" class="img-20 mx-3" />
+                    <label class="form-check-fast" for="flexRadioDefault1">
+                        Thanh toán bằng ví momo
+                    </label>
+                </div>
+                <div class="form-check text-m my-2 align-items-center">
+                    <input class="form-check-input border-black"
+                           type="radio"
+                           name="flexRadioDefault"
+                           id="flexRadioDefault1" />
+                    <img src="/images/VNPay.png" alt="" class="img-20 mx-3" />
+                    <label class="form-check-fast" for="flexRadioDefault1">
+                        Thanh toán bằng ví VN Pay
+                    </label>
+                </div>
+                <div class="form-check text-m my-2 align-items-center">
+                    <input class="form-check-input border-black"
+                           type="radio"
+                           name="flexRadioDefault"
+                           id="flexRadioDefault1" />
+                    <img src="/images/atm-.png" alt="" class="img-20 mx-3" />
+                    <label class="form-check-fast" for="flexRadioDefault1">
+                        Thanh toán bằng thẻ ATM/Internet Banking
+                    </label>
+                </div>
+                <div class="form-check text-m my-2 align-items-center">
+                    <input class="form-check-input border-black"
+                           type="radio"
+                           name="flexRadioDefault"
+                           id="flexRadioDefault1" />
+                    <img src="/images/visa.png" alt="" class="img-20 mx-3" />
+                    <label class="form-check-fast" for="flexRadioDefault1">
+                        Thanh toán bằng thẻ tín dụng/ thẻ ghi nợ
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="w-30">
+            <div class="mb-5 border-fitContent px-20 py-3 bg-white">
+                <div class="order-address d-flex justify-content-between mb-4">
+                    <label for="order-detail-title" class="text-lb text-primary">Giao tới</label>
+                    <div class="icon">
+                        <i class="fas fa-sync-alt p-2">Thay đổi</i>
+                    </div>
+                </div>
+                <div class="d-flex text-m justify-content-between">
+                    <label for="ad-full-name">Do Truong</label>
+                    <label for="ad-phone-number" class="ad-phone-number">0123456789</label>
+                </div>
+                <hr class="hr" />
+                <label for="ad-address" class="text-m mb-3">Khu pho 6, Linh Trung, Thu Duc, TP.HCM</label>
+            </div>
+            <div class="order-detail w-100 px-20 py-3 text-m bg-white border-fitContent">
+                <div class="d-flex flex-column">
+                    <label for="order-detail-title" class="text-lb text-primary">Đơn hàng</label>
+                    <label for="order-quantity-product"
+                           class="text-m text-secondary pb-4">1 sản phẩm</label>
+                </div>
+                <hr class="hr" />
+                @foreach (var cartItem in Model)
+                {
+                    <div class="d-flex justify-content-between">
+                        <label for="order-quantity-book">1x</label>
+                        <label for="order-book-name" class="mx-4">@cartItem.cart_name_book</label>
+                        <label for="expect-price" class="w-50 text-right">@cartItem.cart_price đ</label>
+                    </div>
+                }
+                <hr class="hr" />
+                <div class="d-flex justify-content-between">
+                    <p class="w-50">Tạm tính:</p>
+                    <label for="temp-price" class="w-50 text-right">@total đ</label>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <p class="w-50">Phí vận chuyển:</p>
+                    <label for="temp-price" class="w-50 text-right">200 đ</label>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <p class="w-50">Khuyến mãi vận chuyển:</p>
+                    <label for="temp-price" class="w-50 text-right text-green">- 0 đ</label>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <p class="w-50">Shop khuyến mãi:</p>
+                    <label for="temp-price" class="w-50 text-right text-green">- 0 đ</label>
+                </div>
+                <hr class="hr" />
+                <div class="d-flex justify-content-between py-2">
+                    <p class="w-50 text-bold">Tổng tiền:</p>
+                    <label for="total-price"
+                           class="w-50 text-right card-price text-bold">@(total+=200) đ</label>
+                </div>
+                <p class="text-right text-secondary mb-5">
+                    Đã bao gồm VAT (nếu có)
+                </p>
+                <a href="@Url.Action("Payment", "MomoPayment", new {total = total})" class="btn btn-danger rounded-pill w-100 text-m text-bold">
+                    Đặt hàng
+                </a>
+
+            </div>
+        </div>
+    </div>

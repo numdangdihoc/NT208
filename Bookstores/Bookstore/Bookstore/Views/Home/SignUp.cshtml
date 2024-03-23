@@ -1,0 +1,71 @@
+﻿@model Bookstore.Models.User
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>BookStores</title>
+</head>
+<body>
+
+    <div class="modal-signup">
+        <form class="modal-signup-container" role="form" method="post">
+            <h2>Đăng ký</h2>
+            <div class="inputForm">
+                <i class="far fa-user-circle font-size-icon"></i>
+                <input type="text" class="input" placeholder="Họ tên" name="user_fullname" />
+            </div>
+            <div class="inputForm">
+                <i class="far fa-user-circle font-size-icon"></i>
+                <input type="text"
+                       class="input"
+                       placeholder="Email" name="user_email" />
+            </div>
+            <div class="inputForm">
+                <i class="far fa-user-circle font-size-icon"></i>
+                <input type="text"
+                       class="input"
+                       placeholder="Số điện thoại" name="user_phone" />
+            </div>
+            <div class="inputForm">
+                <i class="far fa-user-circle font-size-icon"></i>
+                <input type="text"
+                       class="input"
+                       placeholder="Tên tài khoản" name="user_name" />
+            </div>
+            <div class="inputForm">
+                <i class="fas fa-lock font-size-icon"></i>
+                <input type="password" class="input" placeholder="Mật khẩu" name="user_password" />
+                <i class="fas fa-eye-slash font-size-icon"></i>
+            </div>
+            <div class="inputForm">
+                <i class="fas fa-lock font-size-icon"></i>
+                <input type="password"
+                       class="input"
+                       placeholder="Nhập lại mật khẩu" name="confirm_password" />
+                <i class="fas fa-eye-slash font-size-icon"></i>
+            </div>
+            <div>
+                <input type="checkbox" />
+                <label style="word-wrap: break-word; color: #666666;"> Đồng ý với chính sách và điều khoản của chúng tôi</label>
+            </div>
+            <div>
+                <p style="color:red">
+                    @TempData["error"]
+                </p>
+            </div>
+            <button type="submit" class="button-submit">Đăng ký</button>
+            <p>Bạn đã có tài khoản? <a class="span" href='~/Home/SignIn'>Đăng nhập</a></p>
+        </form>
+    </div>
+    }
+
+</body>
+</html>

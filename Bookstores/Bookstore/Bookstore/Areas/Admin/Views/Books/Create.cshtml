@@ -1,0 +1,147 @@
+﻿@model Bookstore.Models.Book
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="p-5">
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="row mb-3">
+        <p>
+            <b> Category</b>
+        </p>
+        <div class="col-10">
+            @Html.DropDownList("cate_id", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.cate_id, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <p>
+            <b>Name</b>
+        </p>
+        <div class="col-10">
+            @Html.EditorFor(model => model.book_name, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.book_name, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <p><b>Image</b></p>
+        <div class="col-10">
+            <div class="input-group">
+                @Html.EditorFor(model => model.book_image, new { htmlAttributes = new { @class = "form-control", @id = "book_image" } })
+                @Html.ValidationMessageFor(model => model.book_image, "", new { @class = "text-danger" })
+                <input type="file" id="image_au" name="Anhtg" class="up_anh" onchange="loadFile(event)" style="display:none" />
+                <label for="image_au" style="cursor:pointer">Chọn file ảnh</label>
+                <img id="output" width="150" height="150" style="border: solid 1px black;" />
+                <script>
+                    var loadFile = function (event) {
+                        var output = document.getElementById('output');
+                        output.src = URL.createObjectURL(event.target.files[0]);
+
+                        // Lấy tên file ảnh đã chọn
+                        var filename = event.target.files[0].name;
+                        // Hiển thị tên file ở input text
+                        document.getElementById('book_image').value = filename;
+                    };
+                </script>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row mb-3">
+        <p>
+            <b> Price</b>
+        </p>
+        <div class="col-10">
+            @Html.EditorFor(model => model.book_price, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.book_price, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <p>
+            <b> Author</b>
+        </p>
+        <div class="col-10">
+            @Html.EditorFor(model => model.book_author, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.book_author, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <p>
+            <b> Promotion</b>
+        </p>
+        <div class="col-10">
+            @Html.EditorFor(model => model.book_promotionprice, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.book_promotionprice, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <p>
+            <b> View</b>
+        </p>
+        <div class="col-10">
+            @Html.EditorFor(model => model.book_viewcount, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.book_viewcount, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <p>
+            <b> Description</b>
+        </p>
+        <div class="col-10">
+            @Html.EditorFor(model => model.book_description, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.book_description, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <p>
+            <b>Detail</b>
+        </p>
+        <div class="col-10">
+            @Html.EditorFor(model => model.book_detail, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.book_detail, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <p>
+            <b> Quantity</b>
+        </p>
+        <div class="col-10">
+            @Html.EditorFor(model => model.book_quantity, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.book_quantity, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <p>
+            <b> Status</b>
+        </p>
+        <div class="col-10">
+            @Html.EditorFor(model => model.book_status, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.book_status, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="m-3" class="btn btn-primary">
+
+        <input type="submit" value="Create" class="btn btn-primary" />
+
+        <a href="@Url.Action("Index")" class="btn btn-primary">Back to List</a>
+
+    </div>
+</div>
+}

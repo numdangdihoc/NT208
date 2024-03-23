@@ -1,0 +1,58 @@
+﻿
+@{
+    Layout = null;
+    ViewBag.Title = "Sign In";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>BookStores</title>
+</head>
+<body>
+    <div class="modal-login">
+        <form class="modal-login-container" role="form" method="post">
+            <h2>Đăng nhập</h2>
+            <div class="inputForm">
+                <i class="far fa-user-circle font-size-icon"></i>
+                <input type="text"
+                       class="input"
+                       placeholder="Nhập email hoặc số điện thoại" name="user" autofocus />
+            </div>
+            <div class="inputForm">
+                <i class="fas fa-lock font-size-icon"></i>
+                <input type="password" class="input" placeholder="Nhập mật khẩu" name="password" value="" />
+                <i class="fas fa-eye-slash font-size-icon"></i>
+            </div>
+            <div class="flex-row-2">
+                <div>
+                    <input type="checkbox" />
+                    <label>Lưu tài khoản </label>
+                </div>
+                <span class="span">Quên mật khẩu?</span>
+            </div>
+            <button type="submit" class="button-submit">Đăng nhập</button>
+            <div>
+                <p style="color:red">
+                    @TempData["error"]
+                </p>
+            </div>
+            <p>Bạn chưa có tài khoản? <a class="span" href='~/Home/SignUp'>Đăng kí</a></p>
+            <p class="p line">hoặc đăng nhập bằng</p>
+            <div class="flex-row-2">
+                <button class="btn google">
+                    <i class="fab fa-google font-size-icon"></i>
+                    Google
+                </button>
+                <button class="btn facebook">
+                    <i class="fab fa-facebook font-size-icon"></i>
+                    Facebook
+                </button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
